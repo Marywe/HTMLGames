@@ -1,0 +1,39 @@
+#game {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  position: relative;
+  background-color: cornflowerblue;
+}
+
+#divider {
+  width: 1px;
+  height: 100%;
+  background: black;
+  position: absolute;
+  left: 50%;
+}
+  
+.paddle {
+  width: 10px;
+  height: 50px;
+  background: blue;
+  position: absolute;
+}
+
+#paddle-left {
+  left: 0;
+}
+
+#paddle-right {
+  right: 0;
+}
+
+#ball {
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
