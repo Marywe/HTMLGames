@@ -5,6 +5,10 @@ let ballX = 50;
 let ballY = 50;
 let speedX = 1;
 let speedY = 1;
+let moving = true;
+let punctuation1 = document.getElementById('punctuation1');
+let punctuation2 = document.getElementById('punctuation2');;
+
 
 function moveBall() {
   ballX += speedX;
@@ -15,17 +19,47 @@ function moveBall() {
 }
 
 function checkCollision() {
-  if (ballX < 0 || ballX > game.offsetWidth) {
+  if (ballX < 0) 
+  {
+  
+    moving = false;
+    ++punctuation2.innerHTML;
+
+    ballX = game.offsetWidth / 2 - 6;
+    ballY = game.offsetHeight / 2;
+
+    setTimeout(function(){ moving = true }, 2000);
+
+  }
+  else if (ballX > game.offsetWidth - 12)
+  {
+    ++punctuation1.innerHTML;
+
+    ballX = game.offsetWidth / 2 -6;
+    ballY = game.offsetHeight / 2;
+
+    moving = false;
+
+    setTimeout(function(){ moving = true }, 2000);
+  }
+
+  if (ballY < 0 || ballY > game.offsetHeight -12) {
+    speedY = -speedY;
+  }
+
+   // Check for collisions with the paddles
+   if (ballX < paddles[0].offsetLeft + paddles[0].offsetWidth && ballY > paddles[0].offsetTop && ballY < paddles[0].offsetTop + paddles[0].offsetHeight) {
     speedX = -speedX;
   }
-  if (ballY < 0 || ballY > game.offsetHeight) {
-    speedY = -speedY;
+  if (ballX + ball.offsetWidth > paddles[1].offsetLeft && ballY > paddles[1].offsetTop && ballY < paddles[1].offsetTop + paddles[1].offsetHeight) {
+    speedX = -speedX;
   }
 }
 
+
 const keyDown = {
-    a: false,
-    z: false,
+    w: false,
+    s: false,
     k: false,
     m: false
   };
@@ -46,8 +80,8 @@ const keyDown = {
   });
 
   // Set the initial positions of the paddles
-paddles[0].style.top = '0px';
-paddles[1].style.top = '0px';
+paddles[0].style.top = '200px';
+paddles[1].style.top = '200px';
 
 function movePaddles() {
     // Get the current positions of the paddles
@@ -77,8 +111,12 @@ function movePaddles() {
   }
 
 function gameLoop() {
-    moveBall();
-    checkCollision();
+  punctuation1.innerHTML;  
+  if(moving)
+    {
+      checkCollision();
+      moveBall();
+    }
     movePaddles();
     requestAnimationFrame(gameLoop);
   }
