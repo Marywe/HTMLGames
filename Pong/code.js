@@ -1,6 +1,8 @@
 const game = document.getElementById('game');
 const paddles = document.querySelectorAll('.paddle');
 const ball = document.getElementById('ball');
+let winner = document.getElementById('win');
+
 let ballX = 50;
 let ballY = 50;
 let speedX = 1;
@@ -19,30 +21,6 @@ function moveBall() {
 }
 
 function checkCollision() {
-  if (ballX < 0) 
-  {
-  
-    moving = false;
-    ++punctuation2.innerHTML;
-
-    ballX = game.offsetWidth / 2 - 6;
-    ballY = game.offsetHeight / 2;
-
-    setTimeout(function(){ moving = true }, 2000);
-
-  }
-  else if (ballX > game.offsetWidth - 12)
-  {
-    ++punctuation1.innerHTML;
-
-    ballX = game.offsetWidth / 2 -6;
-    ballY = game.offsetHeight / 2;
-
-    moving = false;
-
-    setTimeout(function(){ moving = true }, 2000);
-  }
-
   if (ballY < 0 || ballY > game.offsetHeight -12) {
     speedY = -speedY;
   }
@@ -54,8 +32,52 @@ function checkCollision() {
   if (ballX + ball.offsetWidth > paddles[1].offsetLeft && ballY > paddles[1].offsetTop && ballY < paddles[1].offsetTop + paddles[1].offsetHeight) {
     speedX = -speedX;
   }
+  
+  
+  if (ballX < 0) 
+  {
+    ++punctuation2.innerHTML;
+
+   RestartBall()
+   if(punctuation1.innerHTML!=7)
+    setTimeout(function(){ moving = true }, 2000);
+
+    else{
+      winner.innerHTML = '<font size="40">P2 WINS</font>';
+      RestartGame();
+    }
+
+  }
+  else if (ballX > game.offsetWidth - 12)
+  {
+    ++punctuation1.innerHTML;
+
+    RestartBall();
+    if(punctuation1.innerHTML!=7)
+      setTimeout(function(){ moving = true }, 2000);
+
+      else{
+        
+        winner.innerHTML = '<font size="40">P1 WINS</font>';
+        RestartGame();
+      }
+  }
+
 }
 
+function RestartBall()
+{
+  ballX = game.offsetWidth / 2 - 6;
+  ballY = game.offsetHeight / 2;
+  moving = false;
+}
+
+function RestartGame()
+{
+  RestartBall();
+  setTimeout(Restart, 6000);
+
+}
 
 const keyDown = {
     w: false,
@@ -80,8 +102,8 @@ const keyDown = {
   });
 
   // Set the initial positions of the paddles
-paddles[0].style.top = '200px';
-paddles[1].style.top = '200px';
+paddles[0].style.top = (game.offsetHeight/2 - 10)+ 'px' ;
+paddles[1].style.top = (game.offsetHeight/2 - 10)+ 'px' ;
 
 function movePaddles() {
     // Get the current positions of the paddles
@@ -110,13 +132,22 @@ function movePaddles() {
       }
   }
 
+function Restart()
+{
+  punctuation1.innerHTML=0;
+  punctuation2.innerHTML=0;
+  moving = true;
+
+}
+
 function gameLoop() {
-  punctuation1.innerHTML;  
   if(moving)
-    {
-      checkCollision();
-      moveBall();
+    {    
+        winner.innerHTML = "";
+        checkCollision();
+        moveBall();    
     }
+
     movePaddles();
     requestAnimationFrame(gameLoop);
   }
