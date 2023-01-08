@@ -21,9 +21,9 @@ function init() {
     player = {
       x: canvas.width / 2,
       y: canvas.height - 50,
-      width: 20,
+      width: 30,
       height: 20,
-      speed: 5,
+      speed: 2,
     };
      // Create the aliens
   aliens = [];
@@ -34,7 +34,7 @@ function init() {
         y: j * 50 + 50,
         width: 40,
         height: 40,
-        speed: 1,
+        speed: 0.7,
       });
     }
   }
@@ -76,7 +76,7 @@ function update() {
       // Reverse alien direction if they reach the edge of the screen
       if (aliens[i].x > canvas.width - aliens[i].width || aliens[i].x < 0) {
         aliens[i].speed *= -1;
-        aliens[i].y += 20;
+        aliens[i].y += 30;
       }
     }
   
@@ -150,20 +150,20 @@ for (let i = 0; i < bullets.length; i++) {
   
   // Handle key down events
   document.addEventListener("keydown", (event) => {
-    if (event.code === "ArrowLeft") {
+    if (event.code === "ArrowLeft" || event.code === 'KeyA') {
       input.left = true;
     }
-    if (event.code === "ArrowRight") {
+    if (event.code === "ArrowRight" || event.code === 'KeyD') {
       input.right = true;
     }
   });
   
   // Handle key up events
   document.addEventListener("keyup", (event) => {
-    if (event.code === "ArrowLeft") {
+    if (event.code === "ArrowLeft" || event.code === 'KeyA') {
       input.left = false;
     }
-    if (event.code === "ArrowRight") {
+    if (event.code === "ArrowRight" || event.code === 'KeyD') {
       input.right = false;
     }
   });
@@ -173,7 +173,7 @@ for (let i = 0; i < bullets.length; i++) {
       // Create a new bullet
       bullets.push({
         x: player.x + player.width / 2,
-        y: player.y + player.height,
+        y: player.y,
         width: 10,
         height: 10,
         speed: 5,
@@ -181,7 +181,7 @@ for (let i = 0; i < bullets.length; i++) {
 
       canShoot = false;
 
-      setTimeout(BulletTimer, 1500);
+      setTimeout(BulletTimer, 1000);
 
     }
   });
@@ -190,8 +190,11 @@ for (let i = 0; i < bullets.length; i++) {
 
 // Main game loop
 function gameLoop() {
+
+  if(!gameOver){
   // Update the game state
   update();
+  }
 
   // Draw the game objects
   draw();
