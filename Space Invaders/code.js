@@ -5,6 +5,7 @@ const ctx = canvas.getContext("2d");
 let player;
 let aliens;
 let bullets;
+let canShoot = true;
 
 // Game state
 let score;
@@ -106,6 +107,15 @@ function collides(a, b) {
       return a.x < b.x + b.width && a.x + a.width > b.x && a.y < b.y + b.height && a.y + a.height > b.y;
 }
 
+function BulletTimer()
+{
+  if (!canShoot)
+  {
+
+    canShoot = true;
+  }
+}
+
 // Draw the game objects
 function draw() {
   // Clear the canvas
@@ -159,7 +169,7 @@ for (let i = 0; i < bullets.length; i++) {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.code === "Space") {
+    if (event.code === "Space" && canShoot) {
       // Create a new bullet
       bullets.push({
         x: player.x + player.width / 2,
@@ -168,6 +178,11 @@ for (let i = 0; i < bullets.length; i++) {
         height: 10,
         speed: 5,
       });
+
+      canShoot = false;
+
+      setTimeout(BulletTimer, 1500);
+
     }
   });
 
