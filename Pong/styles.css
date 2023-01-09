@@ -1,6 +1,8 @@
 #title {
   text-align: center;
   font-size: 5em;
+  margin: 1em;
+  font-family: monospace;
 }
 *{
   font-family: 'Courier New', Courier, monospace;

@@ -90,15 +90,15 @@ const keyDown = {
   window.addEventListener('keydown', function(event) {
     if (event.key === 'w') keyDown.w = true;
     if (event.key === 's') keyDown.s = true;
-    if (event.key === 'k') keyDown.k = true;
-    if (event.key === 'm') keyDown.m = true;
+    if (event.key === "ArrowUp") keyDown.down = true;
+    if (event.key === "ArrowDown") keyDown.up = true;
   });
   
   window.addEventListener('keyup', function(event) {
     if (event.key === 'w') keyDown.w = false;
     if (event.key === 's') keyDown.s = false;
-    if (event.key === 'k') keyDown.k = false;
-    if (event.key === 'm') keyDown.m = false;
+    if (event.key === "ArrowUp") keyDown.down = false;
+    if (event.key === "ArrowDown") keyDown.up = false;
   });
 
   // Set the initial positions of the paddles
@@ -111,22 +111,18 @@ function movePaddles() {
     var paddleRightY = parseInt(paddles[1].style.top);
   
     if (keyDown.w) {
-        // Move the left paddle up
         paddleLeftY = Math.max(0, paddleLeftY - 5);
         paddles[0].style.top = paddleLeftY + 'px';
       }
       if (keyDown.s) {
-        // Move the left paddle down
         paddleLeftY = Math.min(game.offsetHeight - paddles[0].offsetHeight, paddleLeftY + 5);
         paddles[0].style.top = paddleLeftY + 'px';
       }
-      if (keyDown.k) {
-        // Move the right paddle up
+      if (keyDown.down) {
         paddleRightY = Math.max(0, paddleRightY - 5);
         paddles[1].style.top = paddleRightY + 'px';
       }
-      if (keyDown.m) {
-        // Move the right paddle down
+      if (keyDown.up) {
         paddleRightY = Math.min(game.offsetHeight - paddles[1].offsetHeight, paddleRightY + 5);
         paddles[1].style.top = paddleRightY + 'px';
       }
