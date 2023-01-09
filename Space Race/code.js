@@ -1,12 +1,25 @@
-let P1 = document.getElementById('P1');
-let P2 = document.getElementById('P2');
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
+
+const playerSpeed = 1;
+let stoneSpeed;
+let stoneCount;
+
+let p1Y = 10;
+let p1X = 100;
+let p2Y = 10;
+let p2X = 300;
 
 function movePlayer()
 {
 
 }
 
+draw()
+{
+    
+}
 function gameLoop() {
            
          

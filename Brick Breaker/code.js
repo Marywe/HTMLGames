@@ -33,7 +33,7 @@ let ballX = canvas.width / 2;
 let ballY = canvas.height - 30;
 let dx = 1;
 let dy = -1;
-let paddleVel = 4;
+let paddleVel = 3.5;
 
 // Draw the bricks
 function drawBricks() {

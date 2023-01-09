@@ -21,14 +21,13 @@ function moveBall() {
 }
 
 function checkCollision() {
-  if (ballY < 0 || ballY > game.offsetHeight -22) {
-    speedY = -speedY;
-  }
+  if (ballY < 0 || ballY > game.offsetHeight -22) { speedY = -speedY; }
 
    // Check for collisions with the paddles
    if (ballX < paddles[0].offsetLeft + paddles[0].offsetWidth && ballY > paddles[0].offsetTop && ballY < paddles[0].offsetTop + paddles[0].offsetHeight) {
     speedX = -speedX;
   }
+  
   if (ballX + ball.offsetWidth > paddles[1].offsetLeft && ballY > paddles[1].offsetTop && ballY < paddles[1].offsetTop + paddles[1].offsetHeight) {
     speedX = -speedX;
   }
@@ -46,7 +45,6 @@ function checkCollision() {
       winner.innerHTML = '<font size="40">P2 WINS</font>';
       RestartGame();
     }
-
   }
   else if (ballX > game.offsetWidth - 22)
   {
