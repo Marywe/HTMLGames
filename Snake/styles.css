@@ -1,7 +1,25 @@
 #canvas {
     border: 1px solid black;
     background-color: aquamarine;
+    font-family: monospace;
   }
 
+  #container
+  {
+    width:100%;
+    align-content: center;
+    text-align: center;
+  }
+
+  #title {
+    text-align: center;
+    font-size: 5.5em;
+    margin: 0.8em;
+    font-family: monospace;
+  }
+
+  body{
+    background-image: url('bg.jpg');
+  }
 
   

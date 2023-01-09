@@ -36,7 +36,7 @@ if(playing){
           y: Math.floor(Math.random() * 39) * 10
         };
     
-        ctx.font = '48px serif';
+        ctx.font = '48px monospace';
         ctx.fillStyle = 'red';
         ctx.fillText('Yum!', 150, 75);
 
@@ -62,17 +62,17 @@ if(playing){
   
   snake.unshift(newHead);
 
-    ctx.font = '32px serif';
+    ctx.font = '32px monospace';
     ctx.fillStyle = 'black';
     ctx.fillText(punctuation, 200, 375);
 }
 else{
-  ctx.font = '48px sans-serif';
+  ctx.font = '48px monospace';
   ctx.fillStyle = 'black';
   ctx.fillText('Game Over', 75, 180);
-  ctx.font = '28px sans-serif';
+  ctx.font = '28px monospace';
 
-  ctx.fillText("Restarting in 5 secs", 75, 270);
+  ctx.fillText("Restarting in 5 secs", 50, 270);
 
   if(!restarted){
     setTimeout(Restart, 5000);
