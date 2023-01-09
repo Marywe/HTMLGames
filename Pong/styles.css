@@ -1,9 +1,28 @@
+#title {
+  text-align: center;
+  font-size: 5em;
+}
+*{
+  font-family: 'Courier New', Courier, monospace;
+}
+body{
+    background-image: url("bg.jpg");
+
+}
+
+#gameContainer {
+  width: 602px;
+  height: 402px;
+  margin: 0 auto;
+  background-color: cornflowerblue;
+
+
+}
 #game {
-  width: 400px;
-  height: 300px;
+  width: 600px;
+  height: 400px;
   border: 1px solid black;
   position: relative;
-  background-color: cornflowerblue;
 }
 
 #divider {
@@ -22,17 +41,17 @@
 }
 
 #paddle-left {
-  left: 0;
+  left: 20px;
 }
 
 #paddle-right {
-  right: 0;
+  right: 20px;
 }
 
 #ball {
-  width: 10px;
-  height: 10px;
-  background: red;
+  width: 20px;
+  height: 20px;
+  background:crimson;
   border-radius: 50%;
   position: absolute;
 }
@@ -58,7 +77,7 @@
 #win
 {
   position: absolute;
-  left:30%;
+  left:35%;
   bottom:50%; 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 70px;

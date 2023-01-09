@@ -3,8 +3,8 @@ const paddles = document.querySelectorAll('.paddle');
 const ball = document.getElementById('ball');
 let winner = document.getElementById('win');
 
-let ballX = 50;
-let ballY = 50;
+let ballX =  game.offsetWidth / 2 - 11;
+let ballY =  game.offsetHeight/2;
 let speedX = 1;
 let speedY = 1;
 let moving = true;
@@ -21,7 +21,7 @@ function moveBall() {
 }
 
 function checkCollision() {
-  if (ballY < 0 || ballY > game.offsetHeight -12) {
+  if (ballY < 0 || ballY > game.offsetHeight -22) {
     speedY = -speedY;
   }
 
@@ -48,7 +48,7 @@ function checkCollision() {
     }
 
   }
-  else if (ballX > game.offsetWidth - 12)
+  else if (ballX > game.offsetWidth - 22)
   {
     ++punctuation1.innerHTML;
 
@@ -67,7 +67,7 @@ function checkCollision() {
 
 function RestartBall()
 {
-  ballX = game.offsetWidth / 2 - 6;
+  ballX = game.offsetWidth / 2 - 11;
   ballY = game.offsetHeight / 2;
   moving = false;
 }
