@@ -1,7 +1,7 @@
 #title {
   text-align: center;
-  font-size: 5em;
-  margin: 1em;
+  font-size: 5.5em;
+  margin: 0.8em;
   font-family: monospace;
 }
 *{
@@ -13,33 +13,47 @@ body{
 }
 
 #gameContainer {
-  width: 602px;
-  height: 402px;
+  width: 702px;
+  height: 452px;
   margin: 0 auto;
   background-color: cornflowerblue;
 
 
 }
 #game {
-  width: 600px;
-  height: 400px;
+  width: 700px;
+  height: 450px;
   border: 1px solid black;
   position: relative;
 }
 
 #divider {
-  width: 1px;
+  width: 2px;
   height: 100%;
   background: black;
   position: absolute;
   left: 50%;
 }
   
+#circle {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  border: solid black;
+  border-width: 2px;
+  border-radius: 50%;
+  position: relative;
+  margin: auto;
+  top:65;
+}
+
 .paddle {
-  width: 10px;
-  height: 50px;
+  width: 15px;
+  height: 60px;
   background: blue;
   position: absolute;
+  border-radius: 6px;
+
 }
 
 #paddle-left {
@@ -60,27 +74,33 @@ body{
 
 #punctuation1
 {
+  margin-top: 0.2em;
   position: absolute;
   left: 40%;
-  font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  font-family: monospace;
+
 
 }
 
 #punctuation2
 {
+  margin-top: 0.2em;
+
   position: relative;
-  left: 55%;
-  font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
+  left: 57%;
+  font-size: 50px;
+  font-family: monospace;
 
 }
 
 #win
 {
+  border-radius: 5px;
+  background-color: indianred; 
   position: absolute;
-  left:35%;
-  bottom:50%; 
+  left:37%;
+  bottom:73%; 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 70px;
 }

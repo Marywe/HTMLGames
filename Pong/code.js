@@ -5,8 +5,8 @@ let winner = document.getElementById('win');
 
 let ballX =  game.offsetWidth / 2 - 11;
 let ballY =  game.offsetHeight/2;
-let speedX = 1;
-let speedY = 1;
+let speedX = 1.6;
+let speedY = 1.6;
 let moving = true;
 let punctuation1 = document.getElementById('punctuation1');
 let punctuation2 = document.getElementById('punctuation2');;
@@ -38,7 +38,7 @@ function checkCollision() {
     ++punctuation2.innerHTML;
 
    RestartBall()
-   if(punctuation1.innerHTML!=7)
+   if(punctuation2.innerHTML!=7)
     setTimeout(function(){ moving = true }, 2000);
 
     else{
