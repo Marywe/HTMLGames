@@ -32,13 +32,13 @@ if(playing){
     if (snake[0].x === food.x && snake[0].y === food.y) 
     {
         food = {
-          x: Math.floor(Math.random() * 39) * 10,
-          y: Math.floor(Math.random() * 39) * 10
+          x: Math.floor(Math.random() * 49) * 10,
+          y: Math.floor(Math.random() * 49) * 10
         };
     
         ctx.font = '48px monospace';
         ctx.fillStyle = 'red';
-        ctx.fillText('Yum!', 150, 75);
+        ctx.fillText('Yum!', canvas.offsetWidth/2 - 100, 150);
 
         punctuation += 50;
     } 
@@ -62,27 +62,29 @@ if(playing){
   
   snake.unshift(newHead);
 
-    ctx.font = '32px monospace';
-    ctx.fillStyle = 'black';
-    ctx.fillText(punctuation, 200, 375);
 }
 else{
   ctx.font = '48px monospace';
   ctx.fillStyle = 'black';
-  ctx.fillText('Game Over', 75, 180);
+  ctx.fillText('Game Over', 125, 250);
   ctx.font = '28px monospace';
 
-  ctx.fillText("Restarting in 5 secs", 50, 270);
+  ctx.fillText("Restarting in 5 secs", 105, 300);
 
   if(!restarted){
     setTimeout(Restart, 5000);
     restarted = true;
   }
+  
 }
+
+ctx.font = '32px monospace';
+    ctx.fillStyle = 'black';
+    ctx.fillText(punctuation, 50, 450);
 }
 
 function main() { 
-    setInterval(draw, 100);
+    setInterval(draw, 90);
   
 }
 

@@ -15,8 +15,12 @@
 
 
   }
+  body{
+    background-image: url("bg.jpg");
 
+  }
   #title {
+    color: aliceblue;
     text-align: center;
     font-size: 5em;
     margin: 1em;
