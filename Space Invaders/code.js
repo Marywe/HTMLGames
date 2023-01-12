@@ -9,7 +9,7 @@ let canShoot = true;
 
 // Game state
 let score;
-let gameOver;
+let gameOver = false;
 
 let input = {
   left: false,
@@ -43,8 +43,13 @@ function init() {
   bullets = [];
   // Initialize the score
   score = 0;
+
+  if(!gameOver)
+    gameLoop();
   // Set gameOver to false
   gameOver = false;
+
+  
 }
 
 function clamp(value, min, max) {
@@ -195,6 +200,7 @@ function gameLoop() {
   // Update the game state
   update();
   }
+  else init();
 
   // Draw the game objects
   draw();
@@ -202,8 +208,7 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
-init();
-// Start the game loop
-gameLoop();
+window.onload = init();
+
 
 

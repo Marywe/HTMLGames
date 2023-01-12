@@ -119,4 +119,4 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-main();
+window.onload = main();

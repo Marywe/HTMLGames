@@ -127,7 +127,7 @@ function draw() {
 }
 
 // Set up the game loop
-setInterval(draw);
+window.onload = setInterval(draw);
 
 // Set up the keyboard controls
 document.addEventListener("keydown", keyDownHandler, false);

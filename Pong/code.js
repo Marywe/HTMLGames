@@ -146,4 +146,4 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
   }
   
-gameLoop();
+  window.onload = gameLoop();

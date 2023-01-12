@@ -94,4 +94,4 @@ window.addEventListener('keydown', function(event) {
     else if (event.key === "ArrowUp") keyDown.up = false;
   });
 
-gameLoop();
+window.onload = gameLoop();
