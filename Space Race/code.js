@@ -4,15 +4,17 @@ var P1img = document.getElementById("P1img");
 var P2img = document.getElementById("P2img");
 
 let stoneSpeed;
-let stoneCount;
+const stoneCount = 50;
+let stonesNow = 0;
+let stones = [];
 
 let p1Y = 550;
 let p1X = 130-25;
 let p2Y = 550;
 let p2X = 270-25;
-let pWidth = 10;
-let pHeight = 10;
-let playerSpeed = 1;
+const pWidth = 10;
+const pHeight = 10;
+const playerSpeed = 1;
 
 let keyDown = {
   w:false,
@@ -20,6 +22,18 @@ let keyDown = {
   up: false,
   down: false
 };
+
+let winScreen = false;
+function start ()
+{
+  p1Y = 550;
+  p1X = 130-25;
+  p2Y = 550;
+  p2X = 270-25;
+  stonesNow = 0;
+  createAsteroiods();
+  gameLoop();
+}
 
 function movePlayer()
 {
@@ -47,12 +61,57 @@ function movePlayer()
   }
 }
 
-function asteroidsMoving(){
+function asteroidsMoving()
+{
+  for (let i = 0; i < stones.length; i++) {
+    stones[i].x += stones[i].speed;
+  
+    if (stones[i].x < -5 || stones[i].x > canvas.width) {
+      stones.splice(i, 1);
+      --stonesNow;
+      createAsteroiods();
+    }
+  }
+}
 
+function createAsteroiods()
+{
+  for (let index = stonesNow; index < stoneCount; index++) 
+  {
+    let xStone = Math.random();
+    let speedMult = 1;
+
+    //Goes right
+    if(xStone > 0.5)
+    {
+      xStone = -5;
+    }
+    else{
+      xStone = canvas.width;
+      speedMult = -1;
+    }
+
+    stones.push({
+      x: xStone,
+      y: Math.floor(Math.random() * 525),
+      width: 4,
+      speed: (Math.random() * (0.5 - 0.3) + 0.3) * speedMult,
+    });   
+
+    ++stonesNow;
+  }
+  
 }
 
 function win()
 {
+  winScreen = true;
+}
+
+function drawGameOver(){
+
+  ctx.font = "48px sans-serif";
+  ctx.fillText("Game Over!", canvas.width / 2 - 180, canvas.height / 2);
 
 }
 
@@ -60,24 +119,36 @@ function draw()
 {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.drawImage(P1img,p1X,p1Y, 50, 50);
-    ctx.drawImage(P2img,p2X,p2Y, 50, 50);
+  ctx.drawImage(P1img,p1X,p1Y, 50, 50);
+  ctx.drawImage(P2img,p2X,p2Y, 50, 50);
 
+
+  for (let i = 0; i < stoneCount; i++) {
     ctx.beginPath();
-  ctx.arc(50, 50, 4, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.closePath();
+    ctx.arc(stones[i].x, stones[i].y, stones[i].width, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.closePath();
+  }
 
   ctx.fillStyle = "black";
   ctx.rect(canvas.width/2, 50, 2, 500);
   ctx.fill();
 
-
 }
+
 function gameLoop() {
+  if(!winScreen){
     movePlayer();   
-    draw(); 
-    requestAnimationFrame(gameLoop);
+    asteroidsMoving();
+  }
+
+  draw();
+
+  if(winScreen){
+    drawGameOver();
+  }
+
+  requestAnimationFrame(gameLoop);
 }
  
 window.addEventListener('keydown', function(event) {
@@ -94,4 +165,4 @@ window.addEventListener('keydown', function(event) {
     else if (event.key === "ArrowUp") keyDown.up = false;
   });
 
-window.onload = gameLoop();
+window.onload = start();

@@ -116,17 +116,13 @@ function BulletTimer()
 {
   if (!canShoot)
   {
-
     canShoot = true;
   }
 }
 
-// Draw the game objects
 function draw() {
-  // Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Draw the player
   ctx.fillStyle = "white";
   ctx.fillRect(player.x, player.y, player.width, player.height);
 
@@ -135,18 +131,15 @@ function draw() {
     ctx.fillRect(aliens[i].x, aliens[i].y, aliens[i].width, aliens[i].height);
   }
 
-  // Draw the bullets
 for (let i = 0; i < bullets.length; i++) {
   ctx.fillStyle = "red";
     ctx.fillRect(bullets[i].x, bullets[i].y, bullets[i].width, bullets[i].height);
   }
   
-  // Draw the score
   ctx.fillStyle = "white";
   ctx.font = "24px sans-serif";
   ctx.fillText(`Score: ${score}`, 10, 25);
   
-  // Draw game over message
   if (gameOver) {
     ctx.font = "48px sans-serif";
     ctx.fillText("Game Over!", canvas.width / 2 - 150, canvas.height / 2);

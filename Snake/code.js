@@ -8,8 +8,6 @@ let food = { x: 200, y: 200 };
 let punctuation = 0;
 let playing = true;
 let restarted = false;
-let restartTime = 100000;
-
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -83,9 +81,9 @@ ctx.font = '32px monospace';
     ctx.fillText(punctuation, 50, 450);
 }
 
-function main() { 
+function main() 
+{ 
     setInterval(draw, 90);
-  
 }
 
 function Restart()
@@ -117,6 +115,5 @@ document.addEventListener('keydown', function(event) {
       dy = 10;
     }
 });
-
 
 window.onload = main();
