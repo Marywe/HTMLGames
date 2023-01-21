@@ -59,6 +59,19 @@ function movePlayer()
     if(p2Y < 550) p2Y += playerSpeed;
 
   }
+
+
+  for (let i = 0; i < stonesNow; i++) {
+    if (collides(p1X, p1Y, stones[i])) 
+    {
+      p1Y = 550;
+    }
+
+    if (collides(p2X, p2Y, stones[i])) 
+    {
+      p2Y = 550;
+    }
+  }
 }
 
 function asteroidsMoving()
@@ -72,6 +85,13 @@ function asteroidsMoving()
       createAsteroiods();
     }
   }
+}
+
+function collides(x, y, b) {
+  if(!b) return false;
+
+  return(x < b.x + 4 && x + 50 > b.x && y < b.y + 4 && y + 16 > b.y);
+ 
 }
 
 function createAsteroiods()
