@@ -146,10 +146,12 @@ function draw()
   for (let i = 0; i < stoneCount; i++) {
     ctx.beginPath();
     ctx.arc(stones[i].x, stones[i].y, stones[i].width, 0, 2 * Math.PI);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
   }
 
+  
   ctx.fillStyle = "black";
   ctx.rect(canvas.width/2, 50, 2, 500);
   ctx.fill();
@@ -157,12 +159,18 @@ function draw()
 }
 
 function gameLoop() {
-  if(!winScreen){
+  if(!winScreen && !paused)
+  {
     movePlayer();   
     asteroidsMoving();
   }
 
   draw();
+
+  if(paused)
+  {
+    drawPauseMenu();
+  }
 
   if(winScreen){
     drawGameOver();
