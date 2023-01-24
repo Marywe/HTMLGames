@@ -12,7 +12,8 @@ let restarted = false;
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-if(playing){
+if(playing && !paused)
+{
   restarted=false;
 
   for (let i = 0; i < snake.length; i++) {
@@ -61,13 +62,18 @@ if(playing){
   snake.unshift(newHead);
 
 }
+else if (paused)
+{
+ drawPauseMenu();
+}
 else{
   ctx.font = '48px monospace';
   ctx.fillStyle = 'black';
-  ctx.fillText('Game Over', 125, 250);
+  ctx.textAlign = "center";
+  ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2);
   ctx.font = '28px monospace';
-
-  ctx.fillText("Restarting in 5 secs", 105, 300);
+  ctx.textAlign = "center";
+  ctx.fillText("Restarting in 5 secs", canvas.width / 2, canvas.height / 2 + 35);
 
   if(!restarted){
     setTimeout(Restart, 5000);
@@ -79,6 +85,7 @@ else{
 ctx.font = '32px monospace';
     ctx.fillStyle = 'black';
     ctx.fillText(punctuation, 50, 450);
+
 }
 
 function main() 
