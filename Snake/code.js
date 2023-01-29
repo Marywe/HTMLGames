@@ -25,7 +25,12 @@ if(playing && !paused)
   }
 
   ctx.fillStyle = 'lightcoral';
-    ctx.fillRect(food.x, food.y, 10, 10);
+  ctx.fillRect(food.x, food.y, 10, 10);
+
+  ctx.strokeStyle = 'red';
+  ctx.strokeRect(food.x, food.y, 10, 10);
+
+
   
     if(snake.length == 0) return;
     if (snake[0].x === food.x && snake[0].y === food.y) 
@@ -37,7 +42,8 @@ if(playing && !paused)
     
         ctx.font = '48px monospace';
         ctx.fillStyle = 'red';
-        ctx.fillText('Yum!', canvas.offsetWidth/2 - 100, 150);
+        ctx.textAlign = 'center';
+        ctx.fillText('Yum!', canvas.offsetWidth/2, 150);
 
         punctuation += 50;
     } 
@@ -84,7 +90,7 @@ else{
 
 ctx.font = '32px monospace';
     ctx.fillStyle = 'black';
-    ctx.fillText(punctuation, 50, 450);
+    ctx.fillText(punctuation, 75, 470);
 
 }
 
@@ -102,11 +108,13 @@ function Restart()
  punctuation = 0;
  playing = true;
 }
+
 function GameOver()
 {
   playing = false;
   clearInterval(draw); 
 }
+
 document.addEventListener('keydown', function(event) {
     if ((event.code === 'ArrowLeft' || event.code === 'KeyA') && dx === 0) {
       dx = -10;
