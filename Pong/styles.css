@@ -1,11 +1,11 @@
 #title {
   text-align: center;
   font-size: 5.5em;
-  margin: 0.8em;
+  margin: 0.6em;
   font-family: monospace;
 }
 *{
-  font-family: 'Courier New', Courier, monospace;
+  font-family: monospace;
 }
 body{
     background-image: url("bg.jpg");
@@ -16,7 +16,7 @@ body{
   width: 702px;
   height: 452px;
   margin: 0 auto;
-  background-color: cornflowerblue;
+  background-color: black;
 
 
 }
@@ -30,7 +30,7 @@ body{
 #divider {
   width: 2px;
   height: 100%;
-  background: black;
+  background: white;
   position: absolute;
   left: 50%;
 }
@@ -39,7 +39,7 @@ body{
   background-color: transparent;
   width: 200px;
   height: 200px;
-  border: solid black;
+  border: solid white;
   border-width: 2px;
   border-radius: 50%;
   position: relative;
@@ -50,7 +50,7 @@ body{
 .paddle {
   width: 15px;
   height: 60px;
-  background: blue;
+  background: white;
   position: absolute;
   border-radius: 6px;
 
@@ -67,13 +67,14 @@ body{
 #ball {
   width: 20px;
   height: 20px;
-  background:crimson;
+  background:white;
   border-radius: 50%;
   position: absolute;
 }
 
 #punctuation1
 {
+  color:white;
   margin-top: 0.2em;
   position: absolute;
   left: 40%;
@@ -86,6 +87,7 @@ body{
 #punctuation2
 {
   margin-top: 0.2em;
+  color:white;
 
   position: relative;
   left: 57%;
@@ -97,11 +99,11 @@ body{
 #win
 {
   border-radius: 5px;
-  background-color: indianred; 
+  background-color: white; 
   position: absolute;
   left:37%;
-  bottom:73%; 
-  font-family: Arial, Helvetica, sans-serif;
+  bottom:67%; 
+  font-family: monospace;
   font-size: 70px;
 }
 
