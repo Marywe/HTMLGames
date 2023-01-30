@@ -2,6 +2,8 @@ const game = document.getElementById('game');
 const paddles = document.querySelectorAll('.paddle');
 const ball = document.getElementById('ball');
 let winner = document.getElementById('win');
+let pause = document.getElementById('pause');
+
 
 let ballX =  game.offsetWidth / 2 - 11;
 let ballY =  game.offsetHeight/2;
@@ -9,7 +11,7 @@ let speedX = 1.6;
 let speedY = 1.6;
 let moving = true;
 let punctuation1 = document.getElementById('punctuation1');
-let punctuation2 = document.getElementById('punctuation2');;
+let punctuation2 = document.getElementById('punctuation2');
 
 
 function moveBall() {
@@ -135,14 +137,23 @@ function Restart()
 }
 
 function gameLoop() {
+  if(!paused){
   if(moving)
     {    
         winner.innerHTML = "";
         checkCollision();
-        moveBall();    
+        moveBall(); 
+        pause.innerHTML = "";
+   
     }
 
     movePaddles();
+  }
+  else 
+  {
+    pause.innerHTML = "PAUSED";
+  }
+
     requestAnimationFrame(gameLoop);
   }
   

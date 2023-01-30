@@ -88,12 +88,10 @@ body{
 {
   margin-top: 0.2em;
   color:white;
-
   position: relative;
   left: 57%;
   font-size: 50px;
   font-family: monospace;
-
 }
 
 #win
@@ -101,9 +99,20 @@ body{
   border-radius: 5px;
   background-color: white; 
   position: absolute;
-  left:37%;
+  left:39%;
   bottom:67%; 
   font-family: monospace;
   font-size: 70px;
+}
+
+#pause
+{
+  border-radius: 5px;
+  background-color: white; 
+  position: absolute;
+  font-family: monospace;
+  font-size: 70px;
+  bottom:40%; 
+  left:33%;
 }
 
